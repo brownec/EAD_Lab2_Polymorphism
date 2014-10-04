@@ -20,33 +20,60 @@ namespace Polymorphism
         {
            /* Implement a constructor for Vertex which accepts the 
            x and y coordinate (both are integers). */
-            public int Coordinate
+            public int X
+            {
+                get;
+                set;
+            }
+
+            public int Y
             {
                 get;
                 set;
             }
             /* 3.	Implement appropriate properties for the class. */
-            protected Vertex(int x, int y)
+            public Vertex(int x, int y)
             {
-                this.Coordinate = x;
-                this.Coordinate = y;
+                X = x;
+                Y = y;
+            }
+
+            public override string ToString()
+            {
+                return "The coordinate for X is: " + X + " and the coordinate for Y is: " + Y + ".";
             }
         }
 
         /* 1.	Implement a Shape class which stores the color 
          * (e.g. red, blue etc.) of a Shape.  */
-        class Shape
+        // Enumerated type defining the color variables of the shape
+        public enum ShapeColor
         {
-            protected string Colour;
-            /* 2.	Implement a constructor to set the 
-            color for the shape. */
-            public String Colour
+            Red, Blue, Green
+        }
+        
+        // abstract class Shape (2D)
+        public abstract class Shape
+        {
+            public ShapeColor Color
             {
                 get;
                 set;
             }
-            /* 3.	Implement appropriate properties for the class. */
 
+            /* 2.	Implement a constructor to set the 
+            color for the shape. */
+            public Shape (ShapeColor color)
+            {
+                Color = Color;                
+            }
+
+            /* 3.	Implement appropriate properties for the class. */
+            public override string ToString()
+            {
+ 	            return "A " + Color + " shape";;
+            }
+        }
 
             /* 4.	Implement 2 methods in Shape, one to return details 
              * of the Shape (ToString() ) and one to allow a shape to 
