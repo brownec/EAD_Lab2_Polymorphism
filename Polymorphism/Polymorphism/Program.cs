@@ -243,8 +243,15 @@ namespace Polymorphism
 
     class Program
         {
-            static void Main(string[] args)
+            public static void Main()
             {
+                Shape[] shapes = (new Line(2, 2, 3, 3, ShapeColor.Blue), new Circle(5, 5, 50, ShapeColor.Green));
+                foreach (Shape s in shapes)
+                {
+                    Console.WriteLine("before: " + s); 
+                    s.Translate(new Vertex(10, 10));
+                    Console.WriteLine("after: " + s);
+                }
             }
     }
 }
