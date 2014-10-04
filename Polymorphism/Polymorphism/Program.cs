@@ -168,7 +168,6 @@ namespace Polymorphism
                 v1.Y += amount.Y;
                 v2.Y += amount.Y;
             }
-
             // 5.	Test the class. 
         }
 
@@ -177,23 +176,70 @@ namespace Polymorphism
          * Implement a constructor for Circle which take 4 parameters 
          * indicating the x and y coordinates of the origin, the radius, 
          * and the color of the circle. */
-        class Circle : Shape
+        public class Circle : Shape
         {
+            private Vertex origin;
+            public int Radius
+            {
+                get;
+                set;
+            }
 
-        }    
-        // 2.	Implement appropriate properties for the class.
-        
-        /* 3.	Override the ToString() method to display information about the
-         * circle. */ 
+            // no default constructor
 
-        /* 4.	 Override the Translate() method to translate the Circle in 2D 
-         * space. */ 
+            // 2.	Implement appropriate properties for the class.
+            public Circle(int x1, int y1, int radius, ShapeColor sc)
+                : base(sc)
+            {
+                this.origin = new Vertex(x1, y1);
+                Radius = radius;
+            }
 
-        /* 5.	Define a method Area() which calculates and returns the area of 
-         * the circle. */
+            public int X
+            {
+                get
+                {
+                    return origin.X;
+                }
+                set
+                {
+                    origin.X = value;
+                }
+            }
 
-        // 6.	Test the class. 
-        
+            public int Y
+            {
+                get
+                {
+                    return origin.Y;
+                }
+                set
+                {
+                    origin.Y = value;
+                }
+            }
+
+            /* 3.	Override the ToString() method to display information about the
+             * circle. */
+            public override string ToString()
+            {
+                return "A " + Color + " circle at " + X + ", " + Y + " radius " + Radius + " area " + " " + this.CalcArea();
+            }
+            /* 4.	 Override the Translate() method to translate the Circle in 2D 
+             * space. */
+            public override void Translate(Vertex amount)
+            {
+                origin.X += amount.X;
+                origin.Y += amount.Y;
+            }
+            /* 5.	Define a method Area() which calculates and returns the area of 
+             * the circle. */
+            public virtual double CalcArea()
+            {
+                return Math.PI * Radius * Radius;
+            }
+            // 6.	Test the class. 
+        }
 
     class Program
         {
