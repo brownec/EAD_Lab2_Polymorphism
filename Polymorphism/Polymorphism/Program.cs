@@ -73,6 +73,8 @@ namespace Polymorphism
             {
  	            return "A " + Color + " shape";;
             }
+
+            public abstract void Translate(Vertex amount);
         }
 
             /* 4.	Implement 2 methods in Shape, one to return details 
@@ -83,28 +85,89 @@ namespace Polymorphism
              * (as a reference to a Vertex object i.e. 
              * the amount the object is to be translated with respect to
              * the X and Y axes).  */
-        }
+        
 
         /* 1.	Implement a Line class as a subclass of Shape. 
          * A line is to represented by 2 vertices (the endpoints for the
          * line). */
-        class Line : Shape
+        public class Line : Shape
         {
             /* Implement a constructor for Line which take 5 parameters 
          * indicating the x and y coordinates of each vertex and the 
          * color of the line. */
-            public Line ()
+            private Vertex v1, v2;
+            
+            public Line(int x1, int y1, int x2, int y2, ShapeColor sc)
+                : base (sc)
             {
-
+                this.v1 = new Vertex(x1, y1);
+                this.v2 = new Vertex(x2, y2);
+            }
+            /* 2.	Implement appropriate properties for the class. */
+            public int X1
+            {
+                get
+                {
+                    return v1.X;
+                }
+                set
+                {
+                    v1.X = value;
+                }
             }
 
-            /* 2.	Implement appropriate properties for the class. */
+            public int Y1
+            {
+                get
+                {
+                    return v1.Y;
+                }
+                set
+                {
+                    v1.Y = value;
+                }
+            }
 
+            public int X2
+            {
+                get
+                {
+                    return v2.X;
+                }
+                set
+                {
+                    v2.X = value;
+                }
+            }
+
+            public int Y2
+            {
+                get
+                {
+                    return v2.Y;
+                }
+                set
+                {
+                    v2.Y = value;
+                }
+            }
+            
             /* 3.	Override the ToString() method to display information
              * about the line. */
+            public override string ToString()
+            {
+                return "A " + Color + " line from " + X1 + " , " + Y1 + " to " + X2 + " , " + Y2 + ".";
+            }
 
             /* 4.	Override the Translate() method to translate the line in 
              * 2D space.  */
+            public override void Translate(Vertex amount)
+            {
+                v1.X += amount.X;
+                v2.X += amount.X;
+                v1.Y += amount.Y;
+                v2.Y += amount.Y;
+            }
 
             // 5.	Test the class. 
         }
