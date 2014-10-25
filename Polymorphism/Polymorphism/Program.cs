@@ -103,6 +103,11 @@ namespace Polymorphism
                 this.v1 = new Vertex(x1, y1);
                 this.v2 = new Vertex(x2, y2);
             }
+
+            public Line()
+            {
+                // TODO: Complete member initialization
+            }
             /* 2.	Implement appropriate properties for the class. */
             public int X1
             {
@@ -195,6 +200,11 @@ namespace Polymorphism
                 Radius = radius;
             }
 
+            public Circle()
+            {
+                // TODO: Complete member initialization
+            }
+
             public int X
             {
                 get
@@ -238,14 +248,14 @@ namespace Polymorphism
             {
                 return Math.PI * Radius * Radius;
             }
-            // 6.	Test the class. 
         }
 
+    // Test Class
     class Program
         {
             public static void Main()
             {
-                Shape[] shapes = (new Line(2, 2, 3, 3, ShapeColor.Blue), new Circle(5, 5, 50, ShapeColor.Green));
+                Shape[] shapes = new Line(2, 2, 3, 3, ShapeColor.Blue).Shape.Circle(5, 5, 50, ShapeColor.Green);
                 foreach (Shape s in shapes)
                 {
                     Console.WriteLine("before: " + s); 
